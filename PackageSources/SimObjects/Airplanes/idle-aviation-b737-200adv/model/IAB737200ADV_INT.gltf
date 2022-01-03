@@ -443,23 +443,8 @@
     ],
     "materials" : [
         {
-            "doubleSided" : true,
-            "emissiveFactor" : [
-                0,
-                0,
-                0
-            ],
-            "name" : "$EFB",
-            "pbrMetallicRoughness" : {
-                "baseColorFactor" : [
-                    0,
-                    0,
-                    0,
-                    1
-                ],
-                "metallicFactor" : 0,
-                "roughnessFactor" : 0.22033897042274475
-            }
+            "emissiveFactor": [1.0, 1.0, 1.0],
+		    "name": "$EFB"
         },
         {
             "doubleSided" : true,
@@ -571,23 +556,8 @@
             }
         },
         {
-            "doubleSided" : true,
-            "emissiveFactor" : [
-                0,
-                0,
-                0
-            ],
-            "name" : "$CPT_AIRSPEED",
-            "pbrMetallicRoughness" : {
-                "baseColorFactor" : [
-                    0,
-                    0,
-                    0,
-                    1
-                ],
-                "metallicFactor" : 0.30000001192092896,
-                "roughnessFactor" : 0.8999999761581421
-            }
+            "emissiveFactor": [1.0, 1.0, 1.0],
+            "name" : "$CPT_AIRSPEED"
         },
         {
             "doubleSided" : true,
@@ -628,23 +598,8 @@
             }
         },
         {
-            "doubleSided" : true,
-            "emissiveFactor" : [
-                0,
-                0,
-                0
-            ],
-            "name" : "$CPT_ALTIMETER",
-            "pbrMetallicRoughness" : {
-                "baseColorFactor" : [
-                    0,
-                    0,
-                    0,
-                    1
-                ],
-                "metallicFactor" : 0,
-                "roughnessFactor" : 0.15000000596046448
-            }
+            "emissiveFactor": [1.0, 1.0, 1.0],
+            "name" : "$CPT_ALTIMETER"
         },
         {
             "emissiveFactor" : [
@@ -702,23 +657,8 @@
             }
         },
         {
-            "doubleSided" : true,
-            "emissiveFactor" : [
-                0,
-                0,
-                0
-            ],
-            "name" : "$CPT_COMPASS",
-            "pbrMetallicRoughness" : {
-                "baseColorFactor" : [
-                    0,
-                    0,
-                    0,
-                    1
-                ],
-                "metallicFactor" : 0,
-                "roughnessFactor" : 0.5
-            }
+            "emissiveFactor": [1.0, 1.0, 1.0],
+            "name" : "$CPT_COMPASS"
         },
         {
             "emissiveFactor" : [
@@ -739,23 +679,8 @@
             }
         },
         {
-            "doubleSided" : true,
-            "emissiveFactor" : [
-                0,
-                0,
-                0
-            ],
-            "name" : "$CPT_PFD",
-            "pbrMetallicRoughness" : {
-                "baseColorFactor" : [
-                    0,
-                    0,
-                    0,
-                    1
-                ],
-                "metallicFactor" : 0,
-                "roughnessFactor" : 0.20000000298023224
-            }
+            "emissiveFactor": [1.0, 1.0, 1.0],
+            "name" : "$CPT_PFD"
         },
         {
             "doubleSided" : true,

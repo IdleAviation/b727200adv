@@ -1,7 +1,7 @@
 import { FSComponent } from 'msfssdk';
 import { B732PfdComponent } from './b732_pfd.component';
 
-class B737200PFD extends BaseInstrument {
+class B732PFDInstrument extends BaseInstrument {
   get templateID(): string {
     return 'b732-pfd';
   }
@@ -13,4 +13,4 @@ class B737200PFD extends BaseInstrument {
   }
 }
 
-registerInstrument('b732-pfd', B737200PFD);
+registerInstrument('b732-pfd', B732PFDInstrument);
