@@ -19,6 +19,20 @@ Once the above is complete the plan is to 'upgrade' the aircraft with an INS sys
 
 If you would like to contribute to the project, please join our Discord listed above or simply add a feature and make a pull request.
 
+### How to Build
+
+At the moment not much work has been done on the build setup so it's mostly manual, however since we're using the MSFS Avionics Framework by Working Title there are a couple steps involved. 
+
+1. Build the Avionics
+```
+$ cd b737-avionics && npm run build
+```
+This will build all the avionics JS code and move it into the `html_ui` folder.
+
+2. Build the project in MSFS
+
+At this point the aircraft will be available for use/work in MSFS.
+
 ### Who is 'Idle Aviation'?
 
 Flight sim enthusiasts who want interesting airliners in MSFS 2020 who also happen to like the idea of open source and the community getting together to build something cool.
