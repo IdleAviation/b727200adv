@@ -8,6 +8,7 @@ class EFB extends BaseInstrument {
     
     public connectedCallback(): void {
         super.connectedCallback();
+        console.log('Connected Callback: EFB', this);
         FSComponent.render(<EFBComponent />, document.getElementById('InstrumentContent'));
     }
 }

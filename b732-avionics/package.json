@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "clean": "rm -rf build && rm -rf ../PackageSources/html_ui/JS",
-    "build": "./node_modules/fancy-rollup/dist/fancy-rollup.js && cp -R build/JS ../PackageSources/html_ui/",
+    "build": "node ./node_modules/fancy-rollup/dist/fancy-rollup.js && cp -R build/JS ../PackageSources/html_ui/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Idle Aviation",
