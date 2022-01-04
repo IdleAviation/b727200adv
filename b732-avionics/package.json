@@ -4,7 +4,8 @@
   "description": "Avionics for Idle Aviation Boeing 737-200adv",
   "main": "index.js",
   "scripts": {
-    "build": "npx rollup -c",
+    "clean": "rm -rf build && rm -rf ../PackageSources/html_ui/JS",
+    "build": "./node_modules/fancy-rollup/dist/fancy-rollup.js && cp -R build/JS ../PackageSources/html_ui/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Idle Aviation",
@@ -12,6 +13,7 @@
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^13.1.2",
     "@rollup/plugin-typescript": "^8.3.0",
+    "fancy-rollup": "^0.5.5",
     "msfssdk": "file:../../msfs-avionics-mirror/src/sdk/build",
     "rollup": "^2.62.0",
     "rollup-plugin-import-css": "^3.0.2",
