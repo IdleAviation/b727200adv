@@ -108,7 +108,8 @@ Packages/
 _PackageInt/
 .rollup.cache/
 build/
-**/html_ui/JS
+**/html_ui/Pages/VCockpit/Instruments
+
 
 # Blender stuff
 .blend1
