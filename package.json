@@ -4,7 +4,7 @@
   "description": "Idle Aviation Boeing 737-200ADV for MSFS",
   "main": "build.js",
   "scripts": {
-    "build": "./build.js",
+    "build": "node ./build.js",
     "clean": "rm -rf ./Packages && rm -rf ./PackageSources/html_ui/Pages/VCockpit/Instruments/* && rm -rf ./build"
   },
   "repository": {

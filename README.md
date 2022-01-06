@@ -25,13 +25,13 @@ At the moment not much work has been done on the build setup so it's mostly manu
 
 1. Build the Avionics
 ```
-$ cd b737-avionics && npm run build
+$ npm run build
 ```
-This will build all the avionics JS code and move it into the `html_ui` folder.
+This will build all the avionics JS code and move it into the `html_ui` folder in `PackageSources`.
 
 2. Build the project in MSFS
 
-At this point the aircraft will be available for use/work in MSFS.
+At the moment this must be done from within MSFS, so open the project and click 'Build All'. The build script will be updated to handle this eventually Once the package is built the aircraft will be available for use/work in MSFS.
 
 ### Who is 'Idle Aviation'?
 
