@@ -5,7 +5,7 @@
   "main": "build.js",
   "scripts": {
     "build": "node ./build.js",
-    "clean": "rm -rf ./Packages && rm -rf ./PackageSources/html_ui/Pages/VCockpit/Instruments/* && rm -rf ./build"
+    "clean": "rm -rf .rollup.cache && rm -rf ./Packages && rm -rf ./PackageSources/html_ui/Pages/VCockpit/Instruments/* && rm -rf ./build"
   },
   "repository": {
     "type": "git",

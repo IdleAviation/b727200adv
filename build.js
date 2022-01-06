@@ -8,6 +8,11 @@ const boxen = require('boxen');
 const yargs = require('yargs');
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
+const { rollup } = require('rollup');
+const typescript = require('@rollup/plugin-typescript');
+const css = require('rollup-plugin-import-css');
+const { default: resolve } = require('@rollup/plugin-node-resolve');
+
 
 const options = yargs
     .usage('Usage: $0 [options]')
@@ -25,7 +30,8 @@ const options = yargs
     .argv;
 
 const { a: avionicsBuildRequested, p: packageBuildRequested } = options;
-const instrumentRoot = `${__dirname}/PackageSources/html_ui/Pages/VCockpit/Instruments`;
+const instrumentInputRoot = `${__dirname}/b732-avionics/instruments`;
+const instrumentOutputRoot = `${__dirname}/PackageSources/html_ui/Pages/VCockpit/Instruments`;
 const greeting = chalk.white.bold('Idle Aviation - Boeing 737-200 - Building...');
 
 const boxenOptions = {
@@ -33,8 +39,11 @@ const boxenOptions = {
  margin: 0,
  borderStyle: 'round',
  borderColor: 'green',
- backgroundColor: '#555555',
+ backgroundColor: 'black',
 };
+
+const boxenError = { ...boxenOptions };
+boxenError.borderColor = 'red';
 
 const log = (message) => {
     process.stdout.write(message);
@@ -42,7 +51,7 @@ const log = (message) => {
 
 const createTemplates = async () => {
     const templates = [];
-    const files = await recursive(instrumentRoot, ['tsconfig.tsbuildinfo', '*.css']);
+    const files = await recursive(instrumentOutputRoot, ['tsconfig.tsbuildinfo', '*.css']);
     files.forEach((file) => {
         const fileInfo = file.split(path.sep);
         const templateId = fileInfo.pop().replace('.js', '') || false;
@@ -69,24 +78,64 @@ const createTemplates = async () => {
 
 const buildAvionics = async () => {
     let success = true;
-    log(chalk.green.bold('Building Avionics...'));
+    console.log(chalk.green.bold('Building Avionics...'));
     try {
-        await exec('node ./node_modules/fancy-rollup/dist/fancy-rollup.js -r silent');
-        log(chalk.green('avionics built...'));
+        const instrumentFiles = await recursive(instrumentInputRoot, ['*.component.tsx', '*.css']);
+        const instrumentsToBuild = instrumentFiles.map((file) => {
+            const fileInfo = file.split(path.sep);
+            const fileName = fileInfo.pop().replace('.tsx', '');
+            const inputFilePath = fileInfo.join('/');
+            const outputFilePath = fileInfo.join('/').replace(instrumentInputRoot, instrumentOutputRoot);
+
+            return {
+                inputOptions: {
+                    input: `${inputFilePath}/${fileName}.tsx`,
+                    plugins: [css({ output: `${fileName}.css` }), resolve(), typescript({
+                        outputToFilesystem: true,
+                    })],
+                },
+                outputOptions: {
+                    file: `${outputFilePath}/${fileName}.js`,
+                    format: 'es',
+                    name: fileName,
+                },
+            };
+        });
+        log(chalk.green.bold(`Bundling ${instrumentFiles.length} Instruments...`));
+        const bundles = instrumentsToBuild.map((build) => {
+            return new Promise(async (resolve, reject) => {
+                try {
+                    const bundle = await rollup(build.inputOptions);
+                    resolve({
+                        bundle,
+                        outputOptions: build.outputOptions,
+                    });
+                } catch (e) {
+                    reject(`Bundling failed for ${build.inputOptions.input}\n${e}`);
+                }
+            });
+        });
+        const bundleResults = await Promise.all(bundles);
+        console.log(chalk.green.bold('Done!'));
+        log(chalk.green.bold('Building Instruments...'));
+        const outputs = bundleResults.map(({ bundle, outputOptions }) => bundle.generate(outputOptions));
+        await Promise.all(outputs);
+        console.log(chalk.green.bold('Done!'));
     } catch (e) {
         success = false;
-        log(`${chalk.red.bold('Error Building Avionics!')}\n${e}\n`)
+        console.log(boxen(`${chalk.red.bold('Error Building Avionics!')}\n${e}\n`, boxenError))
     }
 
     try {
-        log(chalk.green('creating templates...'));
+        log(chalk.green.bold('Creating Instrument Templates...'));
         await createTemplates();
+        console.log(chalk.green.bold('Done!'));
     } catch (e) {
         success = false;
-        log(`${chalk.red.bold('Error creating templates!')}\n${e}\n`);
+        console.log(boxen(`${chalk.red.bold('Error creating templates!')}\n${e}\n`, boxenError));
     }
 
-    success && console.log(chalk.green.bold('Done!'));
+    success && console.log(boxen(chalk.white.bold('Avionics Built Successfully!'), boxenOptions));
 }
 
 const buildPackage = async () => {
@@ -102,6 +151,6 @@ const buildPackage = async () => {
     const shouldBuildPackage = packageBuildRequested || !avionicsBuildRequested;
     shouldBuildAvionics && await buildAvionics();
     shouldBuildPackage && await buildPackage();
-    console.log(chalk.green.bold('Build Complete!'))
+    console.log(boxen(chalk.white.bold('Build Complete - Good luck, we\'re all counting on you!'), boxenOptions));
 })();
 
