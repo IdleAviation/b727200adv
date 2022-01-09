@@ -30,8 +30,9 @@ const options = yargs
     .argv;
 
 const { a: avionicsBuildRequested, p: packageBuildRequested } = options;
-const instrumentInputRoot = `${__dirname}/b732-avionics/instruments`;
-const instrumentOutputRoot = `${__dirname}/PackageSources/html_ui/Pages/VCockpit/Instruments`;
+const instrumentInputRoot = `${__dirname}${path.sep}b732-avionics${path.sep}instruments`;
+const instrumentOutputRoot = `${__dirname}${path.sep}PackageSources${path.sep}html_ui${path.sep}Pages${path.sep}VCockpit${path.sep}Instruments`;
+
 const greeting = chalk.white.bold('Idle Aviation - Boeing 737-200 - Building...');
 
 const boxenOptions = {
@@ -68,8 +69,9 @@ const createTemplates = async () => {
         }
     });
 
-    const writePromises = templates.map(({ template, templateId, filePath}) => {
-        const fileName = `${filePath}/template.html`;
+    const writePromises = templates.map(({ template, templateId, filePath}) => { // eslint-disable-line
+        const fileName = `${filePath}${path.sep}template.html`;
+        console.log('writing - ', fileName);
         return fs.writeFile(fileName, template);
     });
 
@@ -84,23 +86,24 @@ const buildAvionics = async () => {
         const instrumentsToBuild = instrumentFiles.map((file) => {
             const fileInfo = file.split(path.sep);
             const fileName = fileInfo.pop().replace('.tsx', '');
-            const inputFilePath = fileInfo.join('/');
-            const outputFilePath = fileInfo.join('/').replace(instrumentInputRoot, instrumentOutputRoot);
+            const inputFilePath = fileInfo.join(path.sep);
+            const outputFilePath = fileInfo.join(path.sep).replace(instrumentInputRoot, instrumentOutputRoot);
 
             return {
                 inputOptions: {
-                    input: `${inputFilePath}/${fileName}.tsx`,
+                    input: `${inputFilePath}${path.sep}${fileName}.tsx`,
                     plugins: [css({ output: `${fileName}.css` }), resolve(), typescript({
                         outputToFilesystem: true,
                     })],
                 },
                 outputOptions: {
-                    file: `${outputFilePath}/${fileName}.js`,
+                    file: `${outputFilePath}${path.sep}${fileName}.js`,
                     format: 'es',
                     name: fileName,
                 },
             };
         });
+        console.log(instrumentsToBuild);
         log(chalk.green.bold(`Bundling ${instrumentFiles.length} Instruments...`));
         const bundles = instrumentsToBuild.map((build) => {
             return new Promise(async (resolve, reject) => {
