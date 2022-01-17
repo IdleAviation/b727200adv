@@ -9,8 +9,7 @@
         "version" : "2.0"
     },
     "extensionsUsed" : [
-        "ASOBO_normal_map_convention",
-        "KHR_materials_clearcoat"
+        "ASOBO_normal_map_convention"
     ],
     "scene" : 0,
     "scenes" : [
@@ -865,16 +864,10 @@
                 0,
                 0
             ],
-            "extensions" : {
-                "KHR_materials_clearcoat" : {
-                    "clearcoatFactor" : 0.25,
-                    "clearcoatRoughnessFactor" : 0.029999999329447746
-                }
-            },
             "name" : "material02",
             "pbrMetallicRoughness" : {
                 "metallicFactor" : 1,
-                "roughnessFactor" : 0.550000011920929
+                "roughnessFactor" : 1
             }
         },
         {
@@ -883,16 +876,10 @@
                 0,
                 0
             ],
-            "extensions" : {
-                "KHR_materials_clearcoat" : {
-                    "clearcoatFactor" : 0.25,
-                    "clearcoatRoughnessFactor" : 0.029999999329447746
-                }
-            },
             "name" : "material00",
             "pbrMetallicRoughness" : {
                 "metallicFactor" : 1,
-                "roughnessFactor" : 0.25
+                "roughnessFactor" : 1
             }
         },
         {
@@ -945,20 +932,14 @@
         },
         {
             "emissiveFactor" : [
-                1,
-                0.023124942556023598,
+                0,
+                0,
                 0
             ],
-            "extensions" : {
-                "KHR_materials_clearcoat" : {
-                    "clearcoatFactor" : 0.75,
-                    "clearcoatRoughnessFactor" : 0.029999999329447746
-                }
-            },
             "name" : "material03",
             "pbrMetallicRoughness" : {
-                "metallicFactor" : 0,
-                "roughnessFactor" : 0.15000000596046448
+                "metallicFactor" : 1,
+                "roughnessFactor" : 1
             }
         },
         {
@@ -1065,20 +1046,14 @@
         },
         {
             "emissiveFactor" : [
-                0.011087697930634022,
-                0.011087697930634022,
-                0.011087697930634022
+                0,
+                0,
+                0
             ],
-            "extensions" : {
-                "KHR_materials_clearcoat" : {
-                    "clearcoatFactor" : 0.10000000149011612,
-                    "clearcoatRoughnessFactor" : 0.029999999329447746
-                }
-            },
             "name" : "material05",
             "pbrMetallicRoughness" : {
-                "metallicFactor" : 0.6499999761581421,
-                "roughnessFactor" : 0.800000011920929
+                "metallicFactor" : 1,
+                "roughnessFactor" : 1
             }
         }
     ],
