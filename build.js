@@ -26,7 +26,7 @@ const options = yargs
         describe: 'Build the MSFS package',
         type: 'boolean',
     })
-    .epilog('Running with no options will do all 3 steps, building with options will only do the options selected.')
+    .epilog('Running with no options will do all steps, building with options will only do the options selected.')
     .argv;
 
 const { a: avionicsBuildRequested, p: packageBuildRequested } = options;
@@ -85,7 +85,7 @@ const buildAvionics = async () => {
             const fileInfo = file.split(path.sep);
             const fileName = fileInfo.pop().replace('.tsx', '');
             const inputFilePath = fileInfo.join('/');
-            const outputFilePath = fileInfo.join('/').replace(instrumentInputRoot, instrumentOutputRoot);
+            const outputFilePath = inputFilePath.replace(instrumentInputRoot.replace(/\\/g, "/"), instrumentOutputRoot.replace(/\\/g, "/"));
 
             return {
                 inputOptions: {
@@ -101,6 +101,7 @@ const buildAvionics = async () => {
                 },
             };
         });
+        console.log(instrumentsToBuild);
         log(chalk.green.bold(`Bundling ${instrumentFiles.length} Instruments...`));
         const bundles = instrumentsToBuild.map((build) => {
             return new Promise(async (resolve, reject) => {
