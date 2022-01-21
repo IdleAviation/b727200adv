@@ -14,9 +14,35 @@
 
 		<Component ID="HANDLING">
 			<UseTemplate Name="ASOBO_HANDLING_Aileron_Template">
-				<ANIM_NAME_LEFT>l_aileron_percent_key</ANIM_NAME_LEFT>
-				<ANIM_NAME_RIGHT>r_aileron_percent_key</ANIM_NAME_RIGHT>
+				<ANIM_NAME_LEFT>l_aileron_pct</ANIM_NAME_LEFT>
+				<ANIM_NAME_RIGHT>r_aileron_pct</ANIM_NAME_RIGHT>
 			</UseTemplate>
+			<UseTemplate Name="ASOBO_HANDLING_Rudder_Template">
+				<ANIM_NAME>v_tail_pct</ANIM_NAME>
+			</UseTemplate>
+
+			<UseTemplate Name="ASOBO_HANDLING_Elevator_Template">
+				<ANIM_NAME>l_elevator_pct</ANIM_NAME>
+			</UseTemplate>
+			<UseTemplate Name="ASOBO_HANDLING_Elevator_Template">
+				<ANIM_NAME>r_elevator_pct</ANIM_NAME>
+			</UseTemplate>
+		</Component>
+		
+		<Component ID="GEARS">
+			<UseTemplate Name="ASOBO_GEAR_Left_Template">
+					<ANIM_NAME>l_gear_pct</ANIM_NAME>
+			</UseTemplate>
+			<UseTemplate Name="ASOBO_GEAR_Right_Template">
+					<ANIM_NAME>r_gear_pct</ANIM_NAME>
+			</UseTemplate>
+			<UseTemplate Name="ASOBO_GEAR_Center_Template">
+					<ANIM_NAME>f_gear_pct</ANIM_NAME>
+			</UseTemplate>
+		</Component>
+
+		<Component ID="LANDING_FX">
+			<UseTemplate Name="ASOBO_LANDING_FX"/>
 		</Component>
 	</Behaviors>
 </ModelInfo>

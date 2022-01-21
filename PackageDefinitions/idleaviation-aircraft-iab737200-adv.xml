@@ -18,6 +18,14 @@
 			<AssetDir>PackageDefinitions\idleaviation-aircraft-iab737200-adv\ContentInfo\</AssetDir>
 			<OutputDir>ContentInfo\idleaviation-aircraft-iab737200-adv\</OutputDir>
 		</AssetGroup>
+		<AssetGroup Name="MarketplaceData">
+			<Type>MarketplaceData</Type>
+			<Flags>
+				<FSXCompatibility>false</FSXCompatibility>
+			</Flags>
+			<AssetDir>PackageDefinitions\idleaviation-aircraft-iab737200-adv\MarketplaceData</AssetDir>
+			<OutputDir>MarketplaceData\idleaviation-aircraft-iab737200-adv</OutputDir>
+		</AssetGroup>
 		<AssetGroup Name="html_ui">
 			<Type>Copy</Type>
 			<Flags>
