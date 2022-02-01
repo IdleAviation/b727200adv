@@ -4,6 +4,19 @@
 		<!-- Highest LOD -->
 		<!-- minimum display size in % (should be bounding sphere vertical screen size, sphere will often be slightly larger than you expect) -->
 		<!-- default minSize is 0 -->
-		<LOD minSize="0" ModelFile="interior_v1.gltf"/>
+		<LOD minSize="0" ModelFile="interior_v3.gltf"/>
 	</LODS>
+	<Behaviors>
+		<Include ModelBehaviorFile="Asobo\Common.xml"/>
+		<Component ID="INSTRUMENTS">
+			<Component ID="CAPTAIN_ALTIMETER">
+				<UseTemplate Name="ASOBO_INSTRUMENT_Altimeter_Template">.
+					<ANIM_NAME_100_FEET>altimeter_needle_anim</ANIM_NAME_100_FEET>
+					<NODE_ID_100_FEET>AltimeterNeedle</NODE_ID_100_FEET>
+					<KNOB_ANIM_NAME>altimeter_baro_knob_anim</KNOB_ANIM_NAME>
+					<KNOB_NODE_ID>BaroKnob</KNOB_NODE_ID>
+				</UseTemplate>
+			</Component>
+		</Component>
+	</Behaviors>
 </ModelInfo>

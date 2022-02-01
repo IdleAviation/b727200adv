@@ -4,7 +4,7 @@
 		<!-- Highest LOD -->
 		<!-- minimum display size in % (should be bounding sphere vertical screen size, sphere will often be slightly larger than you expect) -->
 		<!-- default minSize is 0 -->
-		<LOD minSize="0" ModelFile="exterior_v1.gltf"/>
+		<LOD minSize="0" ModelFile="exterior_v2.gltf"/>
 	</LODS>
 
 	<Behaviors>
@@ -38,6 +38,17 @@
 			</UseTemplate>
 			<UseTemplate Name="ASOBO_GEAR_Center_Template">
 					<ANIM_NAME>f_gear_pct</ANIM_NAME>
+			</UseTemplate>
+		</Component>
+
+		<Component ID="INTERACTIVE_POINTS">
+			<UseTemplate Name="ASOBO_DOOR_InteractivePoint_Template">
+				<ID>0</ID>
+				<ANIM_NAME>door_l1_anim</ANIM_NAME>
+			</UseTemplate>
+			<UseTemplate Name="ASOBO_DOOR_InteractivePoint_Template">
+				<ID>1</ID>
+				<ANIM_NAME>door_r1_anim</ANIM_NAME>
 			</UseTemplate>
 		</Component>
 
