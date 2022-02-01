@@ -1,0 +1,7 @@
+.altimeter-component {
+    width: 100%;
+    color: white;
+    background-color: black;
+    font-size: 300px;
+    text-align: right;
+}

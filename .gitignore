@@ -108,8 +108,11 @@ Packages/
 _PackageInt/
 .rollup.cache/
 build/
-**/html_ui/Pages/VCockpit/Instruments
-
+**/html_ui/Pages/VCockpit/Instruments/**/*.js
 
 # Blender stuff
-.blend1
+**/*.blend1
+
+# MACOS
+.DS_Store
+**/.DS_Store
