@@ -1,25 +1,30 @@
 import { FSComponent, Subject, EventBus } from 'msfssdk';
 import { AltimeterComponent, AltitudeEvents } from './b732-altimeter.component';
+
 class Altimeter extends BaseInstrument {
     get templateID(): string {
         return 'b732-flight-altimeter';
     }
 
     private readonly eventBus = new EventBus();
-    private readonly displayType: string | null = 'altitude';
-
-    constructor() {
-        super();
-        const queryParams = new URLSearchParams(window.location.search)
-        this.displayType = queryParams.get('displayType')
-    }
+    private displayType: string = 'altitude';
     
     public connectedCallback(): void {
         super.connectedCallback();
+        const baseUrl = this.getAttribute('Url');
+        if (baseUrl) {
+            const urlData = new URL(baseUrl);
+            this.displayType = urlData.searchParams.get('displayType') || 'altitude';
+        } else {
+            console.error('No baseUrl found, defaulting to altitude display mode');
+        }
+
+        console.log(`Connecting ${this.templateID} as ${this.displayType}`);
         FSComponent.render(<AltimeterComponent bus={ this.eventBus } displayType={ this.displayType } />, document.getElementById('InstrumentContent'));
     }
 
     public Update(): void {
+        
         const indicatedAltitude = SimVar.GetSimVarValue('INDICATED ALTITUDE', 'feet');
         const mb = SimVar.GetSimVarValue('KOHLSMAN SETTING MB:1', 'millibars');
         const inhg = SimVar.GetSimVarValue('KOHLSMAN SETTING HG:1', 'inhg');
