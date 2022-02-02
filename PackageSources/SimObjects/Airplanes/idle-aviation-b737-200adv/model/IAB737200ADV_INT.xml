@@ -4,7 +4,7 @@
 		<!-- Highest LOD -->
 		<!-- minimum display size in % (should be bounding sphere vertical screen size, sphere will often be slightly larger than you expect) -->
 		<!-- default minSize is 0 -->
-		<LOD minSize="0" ModelFile="interior_v3.gltf"/>
+		<LOD minSize="0" ModelFile="interior_v4.gltf"/>
 	</LODS>
 	<Behaviors>
 		<Include ModelBehaviorFile="Asobo\Common.xml"/>
@@ -16,17 +16,33 @@
 					<KNOB_ANIM_NAME>altimeter_baro_knob_anim</KNOB_ANIM_NAME>
 					<KNOB_NODE_ID>BaroKnob</KNOB_NODE_ID>
 				</UseTemplate>
-				<Component ID="CAPTAIN_ALTIMETER_BUG" Node="BugKnob">
-					<UseTemplate Name="ASOBO_GT_Knob_Infinite">
+				<Component ID="CAPTAIN_ALTIMETER_BUG_KNOB">
+					<UseTemplate Name="ASOBO_GT_Knob_Finite_Dummy">
+						<KNOB_NAME>BugKnob</KNOB_NAME>
 						<ANIM_NAME>altimeter_bug_knob_anim</ANIM_NAME>
-						<CLOCKWISE_CODE>(L:B732_CPT_ALT_BUG) 1 +</CLOCKWISE_CODE>
-						<ANTICLOCKWISE_CODE>(L:B732_CPT_ALT_BUG) 1 -</ANTICLOCKWISE_CODE>
-					</UseTemplate>
-					<UseTemplate Name = "ASOBO_GT_Anim_Code">
-						<ANIM_NAME>altimeter_bug_anim</ANIM_NAME>
-						<ANIM_CODE>(L:B732_CPT_ALT_BUG, Percent)</ANIM_CODE>
+						<KNOB_POSITION_VAR_TYPE>L</KNOB_POSITION_VAR_TYPE>
+						<KNOB_POSITION_VAR>B732_CPT_ALT_BUG</KNOB_POSITION_VAR>
+						<KNOB_SPEED>1</KNOB_SPEED>
 					</UseTemplate>
 				</Component>
+				<Component ID="CAPTAIN_ALTIMTER_BUG">
+					<UseTemplate Name="ASOBO_GT_Knob_Finite_Dummy">
+						<KNOB_NAME>AltimeterBug</KNOB_NAME>
+						<ANIM_NAME>altimeter_bug_anim</ANIM_NAME>
+						<KNOB_POSITION_VAR_TYPE>L</KNOB_POSITION_VAR_TYPE>
+						<KNOB_POSITION_VAR>B732_CPT_ALT_BUG</KNOB_POSITION_VAR>
+						<KNOB_SPEED>10</KNOB_SPEED>
+					</UseTemplate>
+				</Component>
+			</Component>
+
+			<Component ID="CAPTAIN_VSI" Node="VSI">
+				<UseTemplate Name="ASOBO_INSTRUMENT_Needle_VerticalSpeed_Template">
+					<NODE_ID>VSINeedle</NODE_ID>
+					<ANIM_NAME>vsi_needle_anim</ANIM_NAME>
+					<PART_ID>VSINeedle</PART_ID>
+					<MAX_VALUE>6000</MAX_VALUE>
+				</UseTemplate>
 			</Component>
 		</Component>
 	</Behaviors>
