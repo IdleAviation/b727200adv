@@ -60,6 +60,7 @@ export class AltimeterComponent extends DisplayComponent<AltimeterComponentProps
   public render(): VNode {
     return (
       <div class='altimeter-component'
+        data-type={ this.displayType }
         data-altitude={ this.altimeterData.altitude } 
         data-mb={ this.altimeterData.mb } 
         data-inhg={ this.altimeterData.inhg }

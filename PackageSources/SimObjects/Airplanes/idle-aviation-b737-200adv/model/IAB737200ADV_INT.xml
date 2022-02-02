@@ -10,12 +10,23 @@
 		<Include ModelBehaviorFile="Asobo\Common.xml"/>
 		<Component ID="INSTRUMENTS">
 			<Component ID="CAPTAIN_ALTIMETER">
-				<UseTemplate Name="ASOBO_INSTRUMENT_Altimeter_Template">.
+				<UseTemplate Name="ASOBO_INSTRUMENT_Altimeter_Template">
 					<ANIM_NAME_100_FEET>altimeter_needle_anim</ANIM_NAME_100_FEET>
 					<NODE_ID_100_FEET>AltimeterNeedle</NODE_ID_100_FEET>
 					<KNOB_ANIM_NAME>altimeter_baro_knob_anim</KNOB_ANIM_NAME>
 					<KNOB_NODE_ID>BaroKnob</KNOB_NODE_ID>
 				</UseTemplate>
+				<Component ID="CAPTAIN_ALTIMETER_BUG" Node="BugKnob">
+					<UseTemplate Name="ASOBO_GT_Knob_Infinite">
+						<ANIM_NAME>altimeter_bug_knob_anim</ANIM_NAME>
+						<CLOCKWISE_CODE>(L:B732_CPT_ALT_BUG) 1 +</CLOCKWISE_CODE>
+						<ANTICLOCKWISE_CODE>(L:B732_CPT_ALT_BUG) 1 -</ANTICLOCKWISE_CODE>
+					</UseTemplate>
+					<UseTemplate Name = "ASOBO_GT_Anim_Code">
+						<ANIM_NAME>altimeter_bug_anim</ANIM_NAME>
+						<ANIM_CODE>(L:B732_CPT_ALT_BUG, Percent)</ANIM_CODE>
+					</UseTemplate>
+				</Component>
 			</Component>
 		</Component>
 	</Behaviors>

@@ -303,7 +303,7 @@
                     }
                 }
             ],
-            "name" : "BugKnobAction.001",
+            "name" : "altimeter_bug_knob_anim",
             "samplers" : [
                 {
                     "input" : 164,
@@ -322,7 +322,7 @@
                     }
                 }
             ],
-            "name" : "AltimeterBugAction",
+            "name" : "altimeter_bug_anim",
             "samplers" : [
                 {
                     "input" : 166,

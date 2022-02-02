@@ -2,6 +2,11 @@
     width: 100%;
     color: white;
     background-color: black;
-    font-size: 300px;
+    font-size: 275px;
     text-align: right;
+    height: 338px;
+}
+
+.altimeter-component[data-type="altitude"] {
+    border: solid 15px white;
 }
