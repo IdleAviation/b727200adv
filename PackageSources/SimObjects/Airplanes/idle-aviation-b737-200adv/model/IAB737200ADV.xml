@@ -4,7 +4,7 @@
 		<!-- Highest LOD -->
 		<!-- minimum display size in % (should be bounding sphere vertical screen size, sphere will often be slightly larger than you expect) -->
 		<!-- default minSize is 0 -->
-		<LOD minSize="0" ModelFile="exterior_v2.gltf"/>
+		<LOD minSize="0" ModelFile="exterior_v3.gltf"/>
 	</LODS>
 
 	<Behaviors>
