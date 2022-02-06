@@ -31,13 +31,13 @@
 		
 		<Component ID="GEARS">
 			<UseTemplate Name="ASOBO_GEAR_Left_Template">
-					<ANIM_NAME>l_gear_pct</ANIM_NAME>
+					<ANIM_NAME>l_gear_anim</ANIM_NAME>
 			</UseTemplate>
 			<UseTemplate Name="ASOBO_GEAR_Right_Template">
-					<ANIM_NAME>r_gear_pct</ANIM_NAME>
+					<ANIM_NAME>r_gear_anim</ANIM_NAME>
 			</UseTemplate>
 			<UseTemplate Name="ASOBO_GEAR_Center_Template">
-					<ANIM_NAME>f_gear_pct</ANIM_NAME>
+					<ANIM_NAME>f_gear_anim</ANIM_NAME>
 			</UseTemplate>
 		</Component>
 

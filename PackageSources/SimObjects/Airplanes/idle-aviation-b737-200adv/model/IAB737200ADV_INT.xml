@@ -4,10 +4,37 @@
 		<!-- Highest LOD -->
 		<!-- minimum display size in % (should be bounding sphere vertical screen size, sphere will often be slightly larger than you expect) -->
 		<!-- default minSize is 0 -->
-		<LOD minSize="0" ModelFile="interior_v4.gltf"/>
+		<LOD minSize="0" ModelFile="interior_v5.gltf"/>
 	</LODS>
 	<Behaviors>
 		<Include ModelBehaviorFile="Asobo\Common.xml"/>
+		<Component ID="OVERHEAD">
+			<Component ID="MASTER_BATTERY_SWITCH" Node="BatteryMasterSwitch">
+				<UseTemplate Name="ASOBO_GT_Switch_Code">
+					<ANIM_NAME>battery_master_swtich_anim</ANIM_NAME>
+					<ANIM_CODE>(A:ELECTRICAL MASTER BATTERY, bool) 1 == if{ 100 } els{ 0 }</ANIM_CODE>
+					<ANIMTIP_0>Master Battery (off)</ANIMTIP_0>
+					<ANIMTIP_1>Master Battery (on)</ANIMTIP_1>
+					<LEFT_SINGLE_CODE>(A:ELECTRICAL MASTER BATTERY, bool) 1 == if{ 0 } els{ 100 } (&gt;A:ELECTRICAL MASTER BATTERY, bool)</LEFT_SINGLE_CODE>
+				</UseTemplate>
+			</Component>
+
+			<Component ID="EXTERNAL_POWER_SWITCH" Node="ExternalPowerSwitch">
+				<UseTemplate Name="ASOBO_GT_Switch_Code">
+					<ANIM_NAME>external_power_switch_anim</ANIM_NAME>
+					<ANIM_CODE>(A:EXTERNAL POWER ON, bool) 1 == if{ 100 } els{ 0 }</ANIM_CODE>
+					<ANIMTIP_0>External Power (off)</ANIMTIP_0>
+					<ANIMTIP_1>External Power (on)</ANIMTIP_1>
+					<LEFT_SINGLE_CODE>(&gt;K:TOGGLE_EXTERNAL_POWER) (&gt;K:ELECTRICAL_BUS_TO_BUS_CONNECTION_TOGGLE:1)</LEFT_SINGLE_CODE>
+				</UseTemplate>
+				<Component ID="EXTERNAL_POWER_SWITCH_EMISSIVE" Node="ExternalPowerAnnunciator">
+					<UseTemplate Name="ASOBO_GT_Emissive_Gauge">
+						<EMISSIVE_CODE>(A:EXTERNAL POWER CONNECTION ON, bool) 0 == (A:ELECTRICAL MASTER BATTERY, bool) 1 == (A:EXTERNAL POWER AVAILABLE, bool) 1 == && if{ 1 } els { 0 }</EMISSIVE_CODE>
+					</UseTemplate>
+				</Component>
+			</Component>
+
+		</Component>
 		<Component ID="INSTRUMENTS">
 			<Component ID="CAPTAIN_ALTIMETER">
 				<UseTemplate Name="ASOBO_INSTRUMENT_Altimeter_Template">
@@ -43,6 +70,25 @@
 					<PART_ID>VSINeedle</PART_ID>
 					<MAX_VALUE>6000</MAX_VALUE>
 				</UseTemplate>
+			</Component>
+
+			<Component ID="CAPTAIN_AIRSPEED">
+				<Component ID="CAPTAIN_AIRSPEED_IAS_NEEDLE" Node="AirspeedNeedle">
+					<UseTemplate Name="ASOBO_INSTRUMENT_Needle_Airspeed_Template">
+							<MIN_VALUE>0</MIN_VALUE>
+							<MAX_VALUE>450</MAX_VALUE>
+							<ANIM_NAME>airspeed_needle_anim</ANIM_NAME>
+							<NODE_ID>AirspeedNeedle</NODE_ID>
+					</UseTemplate>
+				</Component>
+				<Component ID="CAPTAIN_AIRSPEED_BARBER_POLE" Node="AirspeedMaxNeedle">
+					<UseTemplate Name="ASOBO_GT_Needle_Code">
+						<NODE_ID>AirspeedMaxNeedle</NODE_ID>
+						<ANIM_NAME>airspeed_max_needle_anim</ANIM_NAME>
+						<SIMVAR>AIRSPEED BARBER POLE</SIMVAR>
+						<UNITS>KNOTS</UNITS>
+					</UseTemplate>
+				</Component>
 			</Component>
 		</Component>
 	</Behaviors>
