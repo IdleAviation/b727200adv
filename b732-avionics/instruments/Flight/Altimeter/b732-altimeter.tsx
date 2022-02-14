@@ -1,4 +1,4 @@
-import { FSComponent, Subject, EventBus } from 'msfssdk';
+import { FSComponent, EventBus } from 'msfssdk';
 import { AltimeterComponent, AltitudeEvents } from './b732-altimeter.component';
 
 class Altimeter extends BaseInstrument {

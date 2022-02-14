@@ -18,5 +18,13 @@ export default [
       format: 'es'
     },
     plugins: [css({ output: 'PackageSources/html_ui/Pages/VCockpit/Instruments/Flight/Airspeed/b732-flight-airspeed.css' }), resolve(), typescript()]
+  },
+  {
+    input: 'b732-avionics/sp77/sp77.tsx',
+    output: {
+      file: 'PackageSources/html_ui/Pages/VCockpit/Instruments/AP/SP77/sp77.js',
+      format: 'es'
+    },
+    plugins: [css({ output: 'PackageSources/html_ui/Pages/VCockpit/Instruments/AP/SP77/sp77.css' }), resolve(), typescript()]
   }
 ]

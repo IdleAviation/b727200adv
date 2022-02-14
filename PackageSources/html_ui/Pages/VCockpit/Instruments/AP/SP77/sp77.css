@@ -1,0 +1,12 @@
+.sp77-component {
+  width: 100%;
+  color: white;
+  background-color: black;
+  font-size: 275px;
+  text-align: right;
+  height: 338px;
+}
+
+.sp77-component[data-type="heading"] {
+  border: solid 15px white;
+}

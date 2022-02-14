@@ -4,7 +4,7 @@
 		<!-- Highest LOD -->
 		<!-- minimum display size in % (should be bounding sphere vertical screen size, sphere will often be slightly larger than you expect) -->
 		<!-- default minSize is 0 -->
-		<LOD minSize="0" ModelFile="interior_v5.gltf"/>
+		<LOD minSize="0" ModelFile="interior_v6.gltf"/>
 	</LODS>
 	<Behaviors>
 		<Include ModelBehaviorFile="Asobo\Common.xml"/>
@@ -27,7 +27,7 @@
 					<ANIMTIP_1>External Power (on)</ANIMTIP_1>
 					<LEFT_SINGLE_CODE>(&gt;K:TOGGLE_EXTERNAL_POWER) (&gt;K:ELECTRICAL_BUS_TO_BUS_CONNECTION_TOGGLE:1)</LEFT_SINGLE_CODE>
 				</UseTemplate>
-				<Component ID="EXTERNAL_POWER_SWITCH_EMISSIVE" Node="ExternalPowerAnnunciator">
+				<Component ID="EXTERNAL_POWER_SWITCH_EMISSIVE" Node="ExternalPowerAnnunciatorText">
 					<UseTemplate Name="ASOBO_GT_Emissive_Gauge">
 						<EMISSIVE_CODE>(A:EXTERNAL POWER CONNECTION ON, bool) 0 == (A:ELECTRICAL MASTER BATTERY, bool) 1 == (A:EXTERNAL POWER AVAILABLE, bool) 1 == && if{ 1 } els { 0 }</EMISSIVE_CODE>
 					</UseTemplate>
@@ -75,7 +75,7 @@
 			<Component ID="CAPTAIN_AIRSPEED">
 				<Component ID="CAPTAIN_AIRSPEED_IAS_NEEDLE" Node="AirspeedNeedle">
 					<UseTemplate Name="ASOBO_INSTRUMENT_Needle_Airspeed_Template">
-							<MIN_VALUE>0</MIN_VALUE>
+							<MIN_VALUE>60</MIN_VALUE>
 							<MAX_VALUE>450</MAX_VALUE>
 							<ANIM_NAME>airspeed_needle_anim</ANIM_NAME>
 							<NODE_ID>AirspeedNeedle</NODE_ID>
@@ -84,11 +84,36 @@
 				<Component ID="CAPTAIN_AIRSPEED_BARBER_POLE" Node="AirspeedMaxNeedle">
 					<UseTemplate Name="ASOBO_GT_Needle_Code">
 						<NODE_ID>AirspeedMaxNeedle</NODE_ID>
+						<MIN_VALUE>60</MIN_VALUE>
+						<MAX_VALUE>450</MAX_VALUE>
 						<ANIM_NAME>airspeed_max_needle_anim</ANIM_NAME>
 						<SIMVAR>AIRSPEED BARBER POLE</SIMVAR>
 						<UNITS>KNOTS</UNITS>
 					</UseTemplate>
 				</Component>
+			</Component>
+		</Component>
+		<Component ID="MCP">
+			<Component ID="CAPTAIN_FIRE_WARN" Node="FireAnnunicator">
+				<UseTemplate Name="ASOBO_GT_Push_Button">
+					<ANIM_NAME>fire_warn_button_anim</ANIM_NAME>
+					<ANIMTIP>Fire Warning</ANIMTIP>
+				</UseTemplate>
+			</Component>
+			<Component ID="CAPTAIN_MASTER_CAUTION" Node="MasterCaution">
+				<UseTemplate Name="ASOBO_GT_Push_Button">
+					<ANIM_NAME>master_caution_button_anim</ANIM_NAME>
+				</UseTemplate>
+			</Component>
+			<Component ID="HEADING_KNOB" Node="HeadingKnob">
+				<UseTemplate Name="ASOBO_AUTOPILOT_Knob_Heading_Template">
+					<NODE_ID>HeadingKnob</NODE_ID>
+					<ANIM_NAME_KNOB>heading_knob_anim</ANIM_NAME_KNOB>
+					<ANIMTIP_0>TT:COCKPIT.TOOLTIPS.AUTOPILOT_PANEL_HDG_TUNING_LEFT</ANIMTIP_0>
+					<ANIMTIP_0_ON_CURSOR>TurnLeft</ANIMTIP_0_ON_CURSOR>
+					<ANIMTIP_1>TT:COCKPIT.TOOLTIPS.AUTOPILOT_PANEL_HDG_TUNING_RIGHT</ANIMTIP_1>
+					<ANIMTIP_1_ON_CURSOR>TurnRight</ANIMTIP_1_ON_CURSOR>
+				</UseTemplate>
 			</Component>
 		</Component>
 	</Behaviors>
